@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-color: #1f1f1f;
+            padding: 20px;
+        }
+        .logout-button {
+            position: absolute;
+            right: 20px;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+    background-color: #ffffff;
+    color: #080710;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+        }
+        .logout-button:hover {
+            background-color: #555;
+        }
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .project-card {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .project-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .about-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .about-section img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+
+.uploadbutton {
+         width: 200px;
+         height: 200px;
+         background-color: #1f1f1f;
+         background-image: url('/static/image.png');
+         background-size: cover;
+         border: none;
+         cursor: pointer;
+      }
+.welcome {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+        .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+.modal-content {
+  background-color: #1f1f1f;
+  margin: 5% auto;
+  padding: 30px;
+  border: none;
+  width: 30%;
+  border-radius: 8px;
+}
+input[type="text"], input[type="file"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #444;
+  background-color: #222;
+  color: #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+textarea {
+  height: 75px;
+  resize: none;
+}
+.close {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.butt{
+    background-color: #ffffff;
+    color: #080710;
+    padding: 10px 10px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    border: none;
+    }
+.close:hover, .close:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .modal-content {
+    width: 80%;
+  }
+}
+        .popup-button {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .popup-button:hover {
+            background-color: #555;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1f1f1f;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .popup label {
+            display: block;
+            text-align: left;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .popup input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #222;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        #pfp{
+        width:500px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pratiprava's Artworks</h1>
+        <a href="{{url_for('logout')}}">
+        <button class="logout-button">Logout</button>
+            </a>
+    </header>
+{% with messages = get_flashed_messages()%}
+    {% if messages%}
+        {% for message in messages%}
+            <p class="welcome">{{message}}</p>
+        {%endfor%}
+    {%endif%}
+{%endwith%}
+
+    <section class="projects-container">
+        <div class="project-card">
+        <button class="uploadbutton" onclick="document.getElementById('uploadModal').style.display='block'"></button>
+            <h3 style="padding-top:20px">Upload Projects here!!!</h3>
+            </div>
+        <div class="project-card">
+            <img src="/static/Kick.png" alt="Kick Buttowski">
+            <h3>Kick Buttowski</h3>
+            <p>Brief description of Project 1.</p>
+        </div>
+        <div class="project-card">
+            <img src="/static/Krishna Balram.png" alt="Krishna Balram">
+            <h3>Krishna Balram</h3>
+            <p>Brief description of Project 2.</p>
+        </div>
+        <div class="project-card">
+            <img src="/static/dan dan dan 1.png" alt="Dan Da Dan">
+            <h3>Dan Da Dan</h3>
+            <p>Brief description of Project 3.</p>
+        </div>
+        <div class="project-card">
+            <img src="/static/Ganesh&Kartick.png" alt="Ganesh & Kartik">
+            <h3>Ganesha Kartik</h3>
+            <p>Brief description of Project 4.</p>
+        </div>
+    </section>
+    <div id="uploadModal" class="modal">
+
+  <div class="modal-content w3-animate-top">
+
+    <span class="close" onclick="document.getElementById('uploadModal').style.display='none'">&times;</span>
+
+    <h2>Upload Form</h2>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+      <h3>File Name:</h3>
+      <input type="text" id="filename" name="filename" placeholder="Enter project name" required>
+
+       <h3>Description:</h3>
+      <textarea id="desc" name="desc" placeholder="Enter a short description" required></textarea>
+
+      <h3>Select File:</h3>
+      <input type="file" id="file" name="pic" required>
+      <span id="file-name" style="display:block; margin-bottom: 10px; color: #bbb;">No file chosen</span>
+
+      <button type="submit" class="butt">Upload</button>
+      <button type="button" class="butt" onclick="document.getElementById('uploadModal').style.display='none'">Cancel</button>
+    </form>
+  </div>
+</div>
+<script>
+// Close modal when clicking outside
+window.onclick = function(event) {
+  var modal = document.getElementById('uploadModal');
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Display selected file name
+document.getElementById('file').onchange = function() {
+  document.getElementById('file-name').textContent = this.files[0]?.name || "No file chosen";
+}
+</script>
+
+    <section class="about-section">
+        <h2>About Me:</h2>
+        <p>Hello! I'm Pratiprava Dawn, a passionate artist. I dream to be a successful animator, make my chreacters real.</p>
+        <h2>Contact: pratipravadawn962@gmail.com</h2>
+        <img src="/static/ahhhhh.png" alt="anonymous" style="width:300px;height:300px">
+    </section>
+</body>
+</html>

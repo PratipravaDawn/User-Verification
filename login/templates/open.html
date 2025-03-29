@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #080710;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            color: #fff;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 300px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+        }
+        .login {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #e5e5e5;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+{% with messages = get_flashed_messages()%}
+    {% if messages%}
+        {% for message in messages%}
+            <p>{{message}}</p>
+        {%endfor%}
+    {%endif%}
+{%endwith%}
+    <h1>Welcome</h1>
+    <img src="/static/artist.png" alt="Welcome Image" />
+    <div class="login">
+        <a href="{{ url_for('red', name='login') }}">
+            <button>Login</button>
+        </a>
+        <a href="{{ url_for('red', name='signin') }}">
+            <button>Sign in</button>
+        </a>
+    </div>
+</body>
+</html>

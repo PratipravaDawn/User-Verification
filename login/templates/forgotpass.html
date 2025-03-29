@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forgot Password</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background-color: #080710;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            color: #fff;
+        }
+        .container {
+            background-color: rgba(255,255,255,0.13);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        input[type="email"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255,255,255,0.07);
+            color: #fff;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #080710;
+            cursor: pointer;
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+        }
+        button:hover {
+            background-color: #e5e5e5;
+        }
+h3 {
+    color: #ff4d4d;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages()%}
+{% if messages%}
+    {% for message in messages%}
+    <h3>{{e}}</h3>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+        <h2>Forgot Password</h2>
+        <p>Please enter your email to reset your password:</p>
+        <form action="{{ url_for('email') }}" method="post">
+            <input type="email" placeholder="Enter your email" name="email" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
